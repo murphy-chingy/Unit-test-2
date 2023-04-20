@@ -1,0 +1,40 @@
+using UnitTesting;
+
+[TestClass]
+public class TriangleTest
+{
+    [TestMethod]
+    public void TestValidTriangle()
+    {
+        Assert.IsTrue(IsValidTriangle(3, 4, 5));
+        Assert.IsTrue(IsValidTriangle(5, 12, 13));
+        Assert.IsTrue(IsValidTriangle(8, 15, 17));
+        Assert.IsTrue(IsValidTriangle(7, 10, 12));
+    }
+
+    [TestMethod]
+    public void TestInvalidTriangle()
+    {
+        Assert.IsFalse(IsValidTriangle(0, 4, 5));
+        Assert.IsFalse(IsValidTriangle(3, 4, -5));
+        Assert.IsFalse(IsValidTriangle(2, 2, 4));
+        Assert.IsFalse(IsValidTriangle(5, 10, 20));
+    }
+
+    private bool IsValidTriangle(int side1, int side2, int side3)
+    {
+        if (side1 <= 0 || side2 <= 0 || side3 <= 0)
+        {
+            return false;
+        }
+        if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+
